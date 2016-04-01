@@ -1,0 +1,58 @@
+[System 1]
+
+name = PM_QPSK_Transmitter;
+
+numberOfBlocks = 8;
+topology = [01000000;
+            00110000;
+            00001000;
+            00000100;
+            00000010;
+            00000010;
+            00000001;
+            00000000]
+
+[Block 1]
+
+name = Prbs;
+
+patternLenght = 8;
+bitPeriod = 1/1E10;
+
+[S1]
+
+[Block 2]
+
+[S2]
+
+[Block 5]
+
+[S6]
+
+
+
+[Block 6]
+
+[S7]
+
+[Block 7]
+
+
+
+[Block 4]
+
+
+[Block 5]
+
+
+[Block 6]
+
+
+[Block 7]
+
+
+[Block 8] 
+
+
+
+
