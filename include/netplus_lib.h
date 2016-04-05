@@ -6,19 +6,6 @@
 
 using namespace std;
 
-/* Realizes the M-QAM mapping. */
-class MQamMapper : public Block {
-public:
-	MQamMapper(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
-
-	bool runBlock(void);
-
-	t_real amplitude {1};
-	t_binary * reg = new t_binary[2];
-	int inReg{ 0 };
-
-
-};
 
 /* Raised-cosine filter with an impulsional response of a number of taps
 equal to "numberOfTaps" and roll-off factor equal to "rollOff". */
