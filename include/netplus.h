@@ -34,31 +34,11 @@ public:
 
 	~Signal(){ delete buffer; };
 
-	void close() {
-
-		if (inPosition >= firstValueToBeSaved) {
-			char *ptr = (char *) buffer;
-			
-
-			ofstream fileHandler;
-			fileHandler.open("./signals/" + fileName, ios::out | ios::binary | ios::app);
-
-			if (type == "Binary") {
-				ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_binary);
-				fileHandler.write((char *) ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_binary));
-			}
-			else if (type == "TimeContinuousAmplitudeContinuousComplex") {
-				ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_complex);
-				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_complex));
-			}
-			else {
-				ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_real);
-				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_real));
-			}
-
-			fileHandler.close();
-		}
-	}
+	void close();
+	int space();
+	int ready();
+	void writeHeader();
+	void writeHeader(string signalPath);
 
 	template<typename T>
 	void bufferPut(T value) {
@@ -82,43 +62,6 @@ public:
 		if (inPosition == outPosition) bufferFull = true;
 	};
 
-	int space() {
-
-		if (bufferFull) return 0;
-
-		if (inPosition == outPosition) return bufferLength;
-
-		if (inPosition < outPosition) return (outPosition - inPosition);
-	
-		if (outPosition >= 0) return (bufferLength - inPosition + outPosition);
-
-		if (outPosition == -1) return (bufferLength - inPosition);
-
-		return -1;
-	};
-
-	int ready() {
-
-		if (bufferEmpty) return 0;
-
-		if (outPosition == inPosition) {
-			return bufferLength;
-		}
-		else {
-			if (outPosition == -1) return 0;
-			if (inPosition > outPosition) {
-				return (inPosition - outPosition);
-			}
-			else {
-				return (bufferLength - outPosition + inPosition + 1);
-			}
-
-		}
-	};
-
-
-	void writeHeader();
-	void writeHeader(string signalPath);
 
 	string type;
 
