@@ -8,8 +8,8 @@
 # include <vector>
 # include <algorithm>
 
-# include "netplus.h"
-# include "m_qam_mapper.h"
+# include "..\include\netplus.h"
+# include "..\include\m_qam_mapper.h"
 
 
 using namespace std;

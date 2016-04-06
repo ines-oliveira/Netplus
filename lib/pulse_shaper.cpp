@@ -8,8 +8,8 @@
 # include <algorithm>
 # include <functional>
 
-# include "netplus.h"
-# include "pulse_shaper.h"
+# include "..\include\netplus.h"
+# include "..\include\pulse_shaper.h"
 
 using namespace std;
 

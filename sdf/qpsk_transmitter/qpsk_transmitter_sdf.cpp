@@ -1,8 +1,8 @@
-# include "netplus.h"
-# include "binary_source.h"
-# include "m_qam_mapper.h"
-# include "pulse_shaper.h"
-# include "sink.h"
+# include "..\..\include\netplus.h"
+# include "..\..\include\binary_source.h"
+# include "..\..\include\m_qam_mapper.h"
+# include "..\..\include\pulse_shaper.h"
+# include "..\..\include\sink.h"
 
 int main(){
 
