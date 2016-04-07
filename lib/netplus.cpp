@@ -7,7 +7,7 @@
 # include <strstream>
 # include <algorithm>
 
-# include "netplus.h"
+# include "..\include\netplus.h"
 
 
 using namespace std;
@@ -15,9 +15,6 @@ using namespace std;
 //########################################################################################################################################################
 //######################################################### SIGNALS FUNCTIONS IMPLEMENTATION #############################################################
 //########################################################################################################################################################
-
-
-
 
 void Signal::writeHeader(){
 
@@ -61,7 +58,65 @@ void Signal::writeHeader(string signalPath){
 
 };
 
+void Signal::close() {
 
+	if (inPosition >= firstValueToBeSaved) {
+		char *ptr = (char *)buffer;
+
+
+		ofstream fileHandler;
+		fileHandler.open("./signals/" + fileName, ios::out | ios::binary | ios::app);
+
+		if (type == "Binary") {
+			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_binary);
+			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_binary));
+		}
+		else if (type == "TimeContinuousAmplitudeContinuousComplex") {
+			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_complex);
+			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_complex));
+		}
+		else {
+			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_real);
+			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_real));
+		}
+
+		fileHandler.close();
+	}
+};
+
+int Signal::space() {
+
+	if (bufferFull) return 0;
+
+	if (inPosition == outPosition) return bufferLength;
+
+	if (inPosition < outPosition) return (outPosition - inPosition);
+
+	if (outPosition >= 0) return (bufferLength - inPosition + outPosition);
+
+	if (outPosition == -1) return (bufferLength - inPosition);
+
+	return -1;
+};
+
+int Signal::ready() {
+
+	if (bufferEmpty) return 0;
+
+	if (outPosition == inPosition) {
+		return bufferLength;
+	}
+	else {
+		if (outPosition == -1) return 0;
+		if (inPosition > outPosition) {
+			return (inPosition - outPosition);
+		}
+		else {
+			return (bufferLength - outPosition + inPosition + 1);
+		}
+
+	}
+};
 
 //########################################################################################################################################################
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################

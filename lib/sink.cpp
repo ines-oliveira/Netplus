@@ -1,5 +1,5 @@
-# include "netplus.h"
-# include "sink.h"
+# include "..\include\netplus.h"
+# include "..\include\sink.h"
 
 #include <algorithm>    // std::min
 
