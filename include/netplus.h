@@ -25,22 +25,23 @@ const double PI = 3.1415926535897932384;
 //############################################################## SIGNALS DECLARATION AND DEFINITION ######################################################
 //########################################################################################################################################################
 
+// Root class for signals
 class Signal {
 							
 public:
 
-	Signal(string fName) {fileName = fName; };
-	Signal() {};
+	Signal(string fName) {fileName = fName; };		// Signal constructor
+	Signal() {};									// Signal constructor
 
-	~Signal(){ delete buffer; };
+	~Signal(){ delete buffer; };					// Signal destructor
 
-	void close();
-	int space();
-	int ready();
-	void writeHeader();
-	void writeHeader(string signalPath);
+	void close();									// Empty the signal buffer and close the signal file
+	int space();									// Returns the signal buffer space
+	int ready();									// Returns the number of samples in the buffer ready to be processed
+	void writeHeader();								// Opens the signal file in the default signals directory, \signals, and writes the signal header
+	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 
-	template<typename T>
+	template<typename T>							// Puts a value in the buffer
 	void bufferPut(T value) {
 		(static_cast<T *>(buffer))[inPosition] = value;
 		if (bufferEmpty) bufferEmpty = false;
@@ -63,24 +64,24 @@ public:
 	};
 
 
-	string type;
+	string type;									// Signal type
 
-	int bufferLength{ 512 };
-	void *buffer{ NULL };
-	int inPosition{ 0 };							// Next position to be inputed in the buffer of values
-	int outPosition{ 0 };							// Next position to be outputed from the buffer
-	bool bufferEmpty{ true };
-	bool bufferFull{ false };
+	int bufferLength{ 512 };						// Buffer length
+	void *buffer{ NULL };							// Pointer to buffer
+	int inPosition{ 0 };							// Next position to the inputed values
+	int outPosition{ 0 };							// Next position to the outputed values
+	bool bufferEmpty{ true };						// Flag bufferEmpty
+	bool bufferFull{ false };						// Flag bufferFull
 
 	string fileName{ "" };							// Name of the file where data values are going to be saved
-	long int firstValueToBeSaved{ 1 };				// First value/position (>= 1) to be saved
-	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved
+	long int firstValueToBeSaved{ 1 };				// First value (>= 1) to be saved
+	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 	long int numberOfSavedValues{ 0 };				// Number of saved values
 
 	long int count;									// Number of values that have already entered in the buffer
 
-	double symbolPeriod;									// Period (s)
-	double samplingPeriod;
+	double symbolPeriod;							// Signal symbol period (it is the inverse of the symbol rate)
+	double samplingPeriod;							// Signal sampling period (it is the time space between two samples)
 
 };
 
