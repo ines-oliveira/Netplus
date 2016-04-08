@@ -81,8 +81,6 @@ public:
 
 	void *buffer{ NULL };							// Pointer to buffer
 
-
-
 	// Private state variables
 	int bufferLength{ 512 };						// Buffer length
 	

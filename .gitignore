@@ -221,3 +221,6 @@ pip-log.txt
 *.suo
 *.sdf
 *.suo
+*.sdf
+*.sdf
+sdf/qpsk_transmitter/qpsk_transmitter.v12.suo
