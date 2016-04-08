@@ -42,6 +42,7 @@ local.properties
 *.sln.docstates
 *.obj
 *.log
+*.sdf
 
 # Build results
 
