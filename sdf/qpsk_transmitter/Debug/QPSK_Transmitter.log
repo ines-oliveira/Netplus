@@ -1,4 +1,4 @@
-﻿Build started 08-04-2016 08:37:31.
+﻿Build started 08-04-2016 15:06:54.
      1>Project "C:\Users\anp\Documents\GitHub\Netplus\sdf\qpsk_transmitter\QPSK_Transmitter.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\lib\binary_source.cpp ..\..\lib\m_qam_mapper.cpp ..\..\lib\netplus.cpp ..\..\lib\pulse_shaper.cpp ..\..\lib\sink.cpp qpsk_transmitter_sdf.cpp
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.25
+Time Elapsed 00:00:04.03
