@@ -16,48 +16,6 @@ using namespace std;
 //######################################################### SIGNALS FUNCTIONS IMPLEMENTATION #############################################################
 //########################################################################################################################################################
 
-void Signal::writeHeader(){
-
-	string signalPath{ "signals" };
-
-	ofstream headerFile;
-
-	if (!fileName.empty()) {
-
-		headerFile.open("./" + signalPath + "/" + fileName, ios::out);
-
-		headerFile << "Signal type: " << type << "\n";
-		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
-		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
-
-		headerFile << "// ### HEADER TERMINATOR ###\n";
-
-		headerFile.close();
-	}
-
-
-};
-
-void Signal::writeHeader(string signalPath){
-
-	ofstream headerFile;
-
-	if (!fileName.empty()) {
-
-		headerFile.open("./" + signalPath + "/" + fileName, ios::out);
-
-		headerFile << "Signal type: " << type << "\n";
-		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
-		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
-
-		headerFile << "// ### HEADER TERMINATOR ###\n";
-
-		headerFile.close();
-	}
-
-
-};
-
 void Signal::close() {
 
 	if (inPosition >= firstValueToBeSaved) {
@@ -117,6 +75,54 @@ int Signal::ready() {
 
 	}
 };
+
+void Signal::writeHeader(){
+
+	string signalPath{ "signals" };
+
+	ofstream headerFile;
+
+	if (!fileName.empty()) {
+
+		headerFile.open("./" + signalPath + "/" + fileName, ios::out);
+
+		headerFile << "Signal type: " << type << "\n";
+		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
+		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+
+		headerFile.close();
+	}
+
+
+};
+
+void Signal::writeHeader(string signalPath){
+
+	ofstream headerFile;
+
+	if (!fileName.empty()) {
+
+		headerFile.open("./" + signalPath + "/" + fileName, ios::out);
+
+		headerFile << "Signal type: " << type << "\n";
+		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
+		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+
+		headerFile.close();
+	}
+
+
+};
+
+
+
+
+
+
 
 //########################################################################################################################################################
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################

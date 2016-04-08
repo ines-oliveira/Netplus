@@ -217,3 +217,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+*.sdf
+*.suo
+*.sdf
+*.suo
