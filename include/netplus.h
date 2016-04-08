@@ -63,7 +63,6 @@ public:
 		if (inPosition == outPosition) bufferFull = true;
 	};
 
-
 	string type;									// Signal type
 
 	int bufferLength{ 512 };						// Buffer length
@@ -149,7 +148,7 @@ public:
 		if (outPosition == bufferLength) outPosition = 0;
 		if (outPosition == inPosition) bufferEmpty = true;
 		return (value);
-	};
+	}
 
 };
 
@@ -169,7 +168,6 @@ public:
 	TimeDiscreteAmplitudeContinuousComplex(string fName, int bLength) { type = "TimeDiscreteAmplitudeContinuousComplex"; fileName = fName; bufferLength = bLength; buffer = new t_complex[bLength]; }
 	TimeDiscreteAmplitudeContinuousComplex(int bLength) { type = "TimeDiscreteAmplitudeContinuousComplex"; bufferLength = bLength; buffer = new t_complex[bLength]; }
 	TimeDiscreteAmplitudeContinuousComplex(){ if (type == "") type = "TimeDiscreteAmplitudeContinuousComplex"; if (buffer == nullptr) buffer = new t_complex[bufferLength]; }
-
 };
 
 
@@ -224,7 +222,6 @@ public:
 		if (outPosition == inPosition) bufferEmpty = true;
 		return (value);
 	};
-
 };
 
 
