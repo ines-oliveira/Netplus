@@ -19,6 +19,7 @@ const int MAX_BUFFER_LENGTH = 10000;  // Maximum Signal buffer length
 const int MAX_TOPOLOGY_SIZE = 100;  // Maximum System topology size 
 const int MAX_TAPS = 1000;  // Maximum Taps Number
 const double PI = 3.1415926535897932384;
+const double SPEED_OF_LIGHT = 299792458;
 
 
 //########################################################################################################################################################
@@ -30,7 +31,7 @@ class Signal {
 							
 public:
 
-	Signal(string fName) {setFileName(fName); };		// Signal constructor
+	Signal(string fName) {setFileName(fName); };	// Signal constructor
 	Signal() {};									// Signal constructor
 
 	~Signal(){ delete buffer; };					// Signal destructor
@@ -63,13 +64,26 @@ public:
 		if (inPosition == outPosition) bufferFull = true;
 	};
 
-	void setFileName(string fName) { fileName = fName; };
 	void setType(string sType) { type = sType; };
+	string getType(){ return type; };
+
+	void setFileName(string fName) { fileName = fName; };
+	string getFileName(){ return fileName; };
+	
 	void setBufferLength(int bLength) { bufferLength = bLength; };
+	int getBufferLength(){ return bufferLength; };
+
 	void setFirstValueToBeSaved(long int fValueToBeSaved) { firstValueToBeSaved = fValueToBeSaved; };
+	long int getFirstValueToBeSaved(){ return firstValueToBeSaved; };
+
 	void setNumberOfValuesToBeSaved(long int nOfValuesToBeSaved) { numberOfValuesToBeSaved = nOfValuesToBeSaved; };
+	long int getNumberOfValuesToBeSaved(){ return numberOfValuesToBeSaved; };
+
 	void setSymbolPeriod(double sPeriod) { symbolPeriod = sPeriod; };
-	void setSamplePeriod(double sPeriod) { samplingPeriod = sPeriod;  }
+	double getSymbolPeriod() { return symbolPeriod; };
+
+	void setSamplingPeriod(double sPeriod) { samplingPeriod = sPeriod; };
+	double getSamplingPeriod(){ return samplingPeriod; };
 
 	// Public state variables
 	int inPosition{ 0 };							// Next position to the inputed values
@@ -81,7 +95,6 @@ public:
 
 	void *buffer{ NULL };							// Pointer to buffer
 
-	// Private state variables
 	int bufferLength{ 512 };						// Buffer length
 	
 	double symbolPeriod;							// Signal symbol period (it is the inverse of the symbol rate)
@@ -250,10 +263,34 @@ public:
 		if (outPosition == inPosition) bufferEmpty = true;
 		return (value);
 	};
+};
 
+class OpticalSignal : public TimeContinuousAmplitudeContinuousComplex {
+
+public:
+	void setCentralFrequency(double cFrequency){ centralFrequency = cFrequency; centralWavelength = SPEED_OF_LIGHT / centralFrequency; }
+	double getCentralFrequency(){ return centralFrequency; };
+
+	void setCentralWavelength(double cWavelength){ centralWavelength = cWavelength; centralFrequency = SPEED_OF_LIGHT / centralWavelength; }
+	double getCentralWavelength(){ return centralWavelength; };
+
+private:
+	double centralFrequency{ SPEED_OF_LIGHT / 1550E-9 };
+	double centralWavelength{ 1550E-9 };
 
 };
 
+class MultiModeOpticalSignal : OpticalSignal {
+public:
+	MultiModeOpticalSignal(int nOpticalSignals) {
+
+	};
+private:
+	int numberOfOpticalSignals;
+	vector<OpticalSignal> opticalSignals;
+	vector<double> centralWavelengths;
+	vector<double> centralFrequencies;
+};
 
 //########################################################################################################################################################
 //########################################################## GENERIC BLOCKS DECLARATION AND DEFINITION ###################################################
