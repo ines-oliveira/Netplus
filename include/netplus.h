@@ -265,7 +265,7 @@ public:
 	};
 };
 
-class OpticalSignal : public TimeContinuousAmplitudeContinuousComplex {
+class BandpassSignal : public TimeContinuousAmplitudeContinuousComplex {
 
 public:
 	void setCentralFrequency(double cFrequency){ centralFrequency = cFrequency; centralWavelength = SPEED_OF_LIGHT / centralFrequency; }
@@ -280,14 +280,14 @@ private:
 
 };
 
-class MultiModeOpticalSignal : OpticalSignal {
+class MultiModeBandpassSignal : BandpassSignal {
 public:
-	MultiModeOpticalSignal(int nOpticalSignals) {
+	MultiModeBandpassSignal(int nBandpassSignals) {
 
 	};
 private:
-	int numberOfOpticalSignals;
-	vector<OpticalSignal> opticalSignals;
+	int numberOfBandpassSignals;
+	vector<BandpassSignal> bandpasslSignals;
 	vector<double> centralWavelengths;
 	vector<double> centralFrequencies;
 };
