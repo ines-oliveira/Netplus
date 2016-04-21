@@ -21,13 +21,13 @@ int main(){
 	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
 	
 	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };
-	S6.firstValueToBeSaved = 33;
+	S6.setFirstValueToBeSaved(33);
 
 	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn" };
-	S7.firstValueToBeSaved = 33;
+	S7.setFirstValueToBeSaved(33);
 	
 	TimeContinuousAmplitudeContinuousComplex S8{ "S8.sgn" };
-	S8.firstValueToBeSaved = 33;
+	S8.setFirstValueToBeSaved(33);
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
