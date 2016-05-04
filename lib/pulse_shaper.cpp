@@ -32,7 +32,7 @@ bool PulseShaper::runBlock(void) {
 		double samplingPeriod = outputSignals[0]->samplingPeriod;
 		double symbolPeriod = outputSignals[0]->symbolPeriod;
 
-		impulseResponseLength = (int) floor(impulseResponseTimeLength * symbolPeriod / samplingPeriod);
+		impulseResponseLength = (int) floor(numberOfTaps * symbolPeriod / samplingPeriod);
 
 		impulseResponse.resize(impulseResponseLength);
 		double t, sinc;

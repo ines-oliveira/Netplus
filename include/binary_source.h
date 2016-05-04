@@ -51,14 +51,18 @@ class BinarySource : public Block {
 
 	void setBitStream(string bStream) { bitStream = bStream; }
 
+	bool validBitStream(int pLength, vector<char>& values);
+
 	void setNumberOfBits(long int nOfBits) { numberOfBits = nOfBits; }
 
 	void setPatternLength(int pLength) { patternLength = pLength; }
 	
 	void setBitPeriod(double bPeriod);
 
+	void error(int errorType);
+
+	void Log(char *message);    // logs a message to LOGFILE
+
 };
 
 # endif
-
-

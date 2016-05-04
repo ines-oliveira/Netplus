@@ -13,7 +13,7 @@ public:
 
 	bool runBlock(void);
 
-	t_real amplitude {1};
+	t_real amplitude{ sqrt(2) / 2 };
 	t_binary * reg = new t_binary[2];
 	int inReg{ 0 };
 

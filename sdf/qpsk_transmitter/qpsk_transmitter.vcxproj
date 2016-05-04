@@ -10,6 +10,21 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\binary_source.h" />
+    <ClInclude Include="..\..\include\m_qam_mapper.h" />
+    <ClInclude Include="..\..\include\netplus.h" />
+    <ClInclude Include="..\..\include\pulse_shaper.h" />
+    <ClInclude Include="..\..\include\sink.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lib\binary_source.cpp" />
+    <ClCompile Include="..\..\lib\m_qam_mapper.cpp" />
+    <ClCompile Include="..\..\lib\netplus.cpp" />
+    <ClCompile Include="..\..\lib\pulse_shaper.cpp" />
+    <ClCompile Include="..\..\lib\sink.cpp" />
+    <ClCompile Include="qpsk_transmitter_sdf.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9240A19E-6098-4B7A-9E2D-00AB01EDEA59}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -52,7 +67,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -76,20 +91,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\lib\binary_source.cpp" />
-    <ClCompile Include="..\..\lib\m_qam_mapper.cpp" />
-    <ClCompile Include="..\..\lib\netplus.cpp" />
-    <ClCompile Include="..\..\lib\pulse_shaper.cpp" />
-    <ClCompile Include="..\..\lib\sink.cpp" />
-    <ClCompile Include="qpsk_transmitter_sdf.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\include\binary_source.h" />
-    <ClInclude Include="..\..\include\m_qam_mapper.h" />
-    <ClInclude Include="..\..\include\netplus.h" />
-    <ClInclude Include="..\..\include\sink.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
